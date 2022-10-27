@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>863371297681-01baq4k4mjbop5fgu36tch7i1mm94b7k.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.863371297681-01baq4k4mjbop5fgu36tch7i1mm94b7k</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>863371297681-043nbhmq92nh73mjpo36gajf9rnpq5vo.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCa4UAD7aA6s5VGOAcLEolpdBOd1B55aSM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>863371297681</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>mx.iteso.fshare</string>
+	<key>PROJECT_ID</key>
+	<string>actividades-curso-moviles-2022</string>
+	<key>STORAGE_BUCKET</key>
+	<string>actividades-curso-moviles-2022.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:863371297681:ios:4b2ff1fe5a0ca32370d030</string>
+</dict>
+</plist>

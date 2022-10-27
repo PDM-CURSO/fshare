@@ -1,25 +1,59 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fshare/auth/bloc/auth_bloc.dart';
+import 'package:fshare/content/espera/bloc/pending_bloc.dart';
 import 'package:fshare/home_page.dart';
-import 'package:fshare/login/form_body_firebase.dart';
+import 'package:fshare/login/login_page.dart';
 
 void main() async {
-  // inicializar firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthBloc()..add(VerifyAuthEvent()),
+        ),
+        BlocProvider(
+          create: (context) => PendingBloc()..add(GetAllMyDisabledFotosEvent()),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: FirebaseAuth.instance.currentUser != null
-          ? HomePage()
-          : FormBodyFirebase(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.purple,
+        ),
+      ),
+      home: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Favor de autenticarse"),
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is AuthSuccessState) {
+            return HomePage();
+          } else if (state is UnAuthState ||
+              state is AuthErrorState ||
+              state is SignOutSuccessState) {
+            return LoginPage();
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
     );
   }
 }
